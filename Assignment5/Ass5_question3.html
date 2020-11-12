@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Question3</title>
+</head>
+<script type="text/javascript">
+	function validateParanthesis()
+	{
+		var input=document.getElementById('input').value;
+		var stack=[];
+		var ans='True';
+		for(var i=0;i<input.length;i++)
+		{
+			if(input[i]=='(' || input[i]=='{' || input[i]=='[')
+			{
+				stack.push(input[i]);
+			}
+			else if(input[i]==')')
+			{
+				if(stack.length>0)
+				{
+					var lastElement=stack.pop();
+					if(lastElement!='(')
+					{
+						ans='False';
+						break;
+					}
+				}
+				else
+				{
+					ans='False';
+					break;
+				}
+			}
+			else if(input[i]=='}')
+			{
+				if(stack.length>0)
+				{
+					var lastElement=stack.pop();
+					if(lastElement!='{')
+					{
+						ans='False';
+						break;
+					}
+				}
+				else
+				{
+					ans='False';
+					break;
+				}
+			}
+			else if(input[i]==']')
+			{
+				if(stack.length>0)
+				{
+					var lastElement=stack.pop();
+					if(lastElement!='[')
+					{
+						ans='False';
+						break;
+					}
+				}
+				else
+				{
+					ans='False';
+					break;
+				}
+			}
+		}
+		if(stack.length>0)
+			ans='False';
+		alert(ans)
+	}
+</script>
+<body>
+<label>Enter String:</label>
+<input type="text" name="String" id="input" placeholder="Enter your string here">
+<input type="submit" name="Submit" value="Submit" onclick="validateParanthesis()">
+
+</body>
+</html>

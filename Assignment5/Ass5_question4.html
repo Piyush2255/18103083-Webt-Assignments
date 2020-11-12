@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Question4</title>
+	<script type="text/javascript">
+		function createTriangle(rows)
+		{
+			var triangle=' '.repeat(rows-1)+'0'+'\n';
+			for(var i=1;i<rows;i++)
+			{
+				triangle=triangle+' '.repeat(rows-i-1)+'*'.repeat(2*i+1)+'\n';
+			}
+			return triangle;
+		}
+		function createPoll(rows)
+		{
+			var poll='';
+			for(var i=0;i<3;i++)
+			{
+				poll=poll+' '.repeat(rows-2)+'*'.repeat(3)+'\n';
+			}
+			return poll;
+		}
+		function createChristmasTree()
+		{
+			var rows=document.getElementById('rows').value;
+			rows=parseInt(rows)
+			if(rows==NaN || rows<3 || rows>20)
+			{
+				alert('Invalid Input');
+				return;
+			}
+			var triangle=createTriangle(rows);
+			var poll=createPoll(rows);
+			alert(triangle+poll);
+		}
+	</script>
+</head>
+<body>
+
+<label>Enter no. of rows of tree:</label>
+<input type="text" name="tree" id="rows" placeholder="Min rows: 3 and Max rows: 20" size="50">
+<input type="submit" name="Submit" value="Submit" onclick="createChristmasTree()">
+
+</body>
+</html>
